@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbys</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="About.html">About me</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="Hobbys.html" style="color: cyan;">Hobbies</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="carousel">
+            <div class="carousel-content">
+                <div class="carousel-item active">
+                    <img src="Coding.png" alt="Image 1">
+                    <div class="text-content">
+                        <p>As said, one of my hobbys is actually my work, I jsut enjoy creating cool stuff and gain programming experience.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Bike.jpg" alt="Image 2">
+                    <div class="text-content">
+                        <p>I'm a bike lover, if it were to me, I would drive all day long, anywhere and anytime</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script>
+
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+        });
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-item');
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-content').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+
+    </script>
+</body>
+</html>

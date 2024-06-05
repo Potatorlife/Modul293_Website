@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="About.html" style="color: cyan;">About me</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="Hobbys.html">Hobbies</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="profile-about">
+            <h2>About me-</h2>
+            <div class="about-container">
+                <div class="photo-about">
+                    <img src="Mark.jpg" alt="Profile Photo">
+                </div>
+                <div class="info-about">
+                    <p>My name is Mark, and I'm 18 years old. I have a passion for coding and technology. Currently, I am in the first year of my apprenticeship, which is granted by Leica Geosystems. This opportunity has allowed me to dive directly to my dream.</p>
+                    <p> In my spare time, I enjoy working on personal coding projects, exploring new programming languages, and improving my skills. My Hobby is currently driving my motorcycle, and starting to prepare myself for the driving exam I am going to have</p>
+                    <div class="stats">
+                        <div>
+                            <span>01+</span>
+                            <p class="p-about">Years of experience</p>
+                        </div>
+                        <div>
+                            <span>06+</span>
+                            <p class="p-about">Completed projects</p>
+                        </div>
+                        <div>
+                            <span>05+</span>
+                            <p class="p-about">Used Programming languages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="download-cv">
+                <a href="#">Download CV</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

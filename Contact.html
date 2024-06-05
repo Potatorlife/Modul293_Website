@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="About.html">About me</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="Hobbys.html">Hobbies</a></li>
+                    <li><a href="Contact.html" style="color: cyan;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><strong>Call me</strong><br>079 999 xx xx</p>
+                <p><strong>Email</strong><br>mark.xxxx@xxx.com</p>
+                <p><strong>Instagram</strong><br>mark.xxxx</p>
+                <p><strong>LinkedIn</strong><br>Mark Matkovic</p>
+            </div>
+            <form class="contact-form">
+                <div class="row">
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>First Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Last Name</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required">
+                        <span>Reference</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="inputBox" id="Message">
+                        <input type="text" required="required">
+                        <span>Message</span>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="button">Send</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

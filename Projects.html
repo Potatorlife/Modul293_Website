@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rechner.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="About.html">About me</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="Projects.html" style="color: cyan;">Projects</a></li>
+                    <li><a href="Hobbys.html">Hobbies</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="projects-section">
+            <h2 class="projects-h2">Projects</h2>
+            <div class="filter-buttons">
+                <button onclick="filterProjects('all')">All</button>
+                <button onclick="filterProjects('unfinished-projects')">unfinished-projects</button>
+                <button onclick="filterProjects('finished-projects')">finished-projects</button>
+            </div>
+            <div class="projects-container">
+                <div class="project" onclick="openProject('calculator')">
+                    <img src="Calculator.png" alt="Calculator">
+                    <div class="project-title">Calculator</div>
+                </div>
+                <div class="project" onclick="openProject('memoryGame')">
+                    <img src="Memory.png" alt="Memory Game">
+                    <div class="project-title">Memory Game</div>
+                </div>
+                <div class="project" onclick="openProject('helloWorld')">
+                    <img src="Hello.png" alt="Hello World">
+                    <div class="project-title">Hello World</div>
+                </div>
+                <div class="project" onclick="openProject('firstWebsite')">
+                    <img src="Erste-Website.png" alt="First Website">
+                    <div class="project-title">First Website</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeProject()">&times;</span>
+                <div id="projectDetails"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.style.display = category === 'all' || project.classList.contains(category) ? 'block' : 'none';
+            });
+        }
+
+        function openProject(projectId) {
+            const projectDetails = {
+                calculator: `<div class="result-bar-container">
+                                <div class="result-bar" id="resultBar"></div>
+                                <div class="result-scale" id="resultScale"></div>
+                            </div>
+                            <div class="container">
+                                <div class="calculator">
+                                    <form>
+                                        <div class="display">
+                                            <input type="text" name="display">
+                                        </div>
+                                        <div>
+                                            <input type="button" value="AC" onclick ="display.value = ''" class="operator">
+                                            <input type="button" value="DE" onclick ="display.value = display.value.toString().slice(0, -1)" class="operator">
+                                            <input type="button" value="." onclick ="display.value += '.' " class="operator">
+                                            <input type="button" value="/" onclick ="display.value += '/'" class="operator">
+                                        </div>
+                                        <div>
+                                            <input type="button" value="7" onclick ="display.value += '7'">
+                                            <input type="button" value="8" onclick ="display.value += '8'">
+                                            <input type="button" value="9" onclick ="display.value += '9'">
+                                            <input type="button" value="*" onclick ="display.value += '*'" class="operator">
+                                        </div>
+                                        <div>
+                                            <input type="button" value="4" onclick ="display.value += '4'">
+                                            <input type="button" value="5" onclick ="display.value += '5'">
+                                            <input type="button" value="6" onclick ="display.value += '6'">
+                                            <input type="button" value="-" onclick ="display.value += '-'" class="operator">
+                                        </div>
+                                        <div>
+                                            <input type="button" value="1" onclick ="display.value += '1'">
+                                            <input type="button" value="2" onclick ="display.value += '2'">
+                                            <input type="button" value="3" onclick ="display.value += '3'">
+                                            <input type="button" value="+" onclick ="display.value += '+'" class="operator">
+                                        </div>
+                                        <div>
+                                            <input type="button" value="00" onclick ="display.value += '00'">
+                                            <input type="button" value="0" onclick ="display.value += '0'">
+                                            <input type="button" value="=" class="equal" onclick ="display.value = eval(display.value)">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>`,
+                memoryGame: `<div class="game">
+                                <div class="controls">
+                                    <button id="startButton">Start</button>
+                                    <button id="restartButton">Restart</button>
+                                    <div class="stats">
+                                        <div class="moves">0 moves</div>
+                                        <div class="timer">Time : 0 sec</div>
+                                    </div>
+                                </div>
+                                <div class="board-container">
+                                    <div class="board" data-dimension="4"></div>
+                                    <div class="win">You won!</div>
+                                </div>
+                             </div>`,
+                helloWorld: `<pre>
+                            #include <stdio.h>
+
+                            int main() {
+                                printf("Hello, World!");
+                                return 0;
+                            }
+                            </pre>`,
+                firstWebsite: `<div>
+                                <h1>Hallo BLJ</h1>
+                                <h2>Hier ist Mark</h2>
+                                <p>Das ist meine erste html erstellte Website</p>
+                              </div>`
+            };
+
+            document.getElementById('projectDetails').innerHTML = projectDetails[projectId];
+            document.getElementById('projectModal').style.display = 'block';
+
+            if (projectId === 'memoryGame') {
+                // Load the necessary scripts dynamically
+                const script1 = document.createElement('script');
+                script1.src = 'https://code.jquery.com/jquery-3.7.1.js';
+                script1.integrity = 'sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=';
+                script1.crossOrigin = 'anonymous';
+                document.body.appendChild(script1);
+
+                script1.onload = function() {
+                    const script2 = document.createElement('script');
+                    script2.src = 'script.js';
+                    document.body.appendChild(script2);
+                };
+            }
+
+            if (projectId === 'calculator') {
+                const script = document.createElement('script');
+                script.src = 'Rechner.js';
+                document.body.appendChild(script);
+            }
+        }
+
+        function closeProject() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

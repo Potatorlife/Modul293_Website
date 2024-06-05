@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="About.html">About me</a></li>
+                    <li><a href="Skills.html" style="color: cyan;">Skills</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="Hobbys.html">Hobbies</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="skills-section">
+            <div class="skills-container">
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Web Development</span>
+                        <span class="toggle-arrow">^</span>
+                    </div>
+                    <div class="skill-bar">
+                        <p>HTML</p>
+                        <div class="progress" data-skill="80%" style="width: 80%;"></div>
+                        <p>CSS</p>
+                        <div class="progress" data-skill="60%" style="width: 60%;"></div>
+                        <p>JavaScript</p>
+                        <div class="progress" data-skill="85%" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Programming Languages</span>
+                        <span class="toggle-arrow">^</span>
+                    </div>
+                    <div class="skill-bar">
+                        <p>C</p>
+                        <div class="progress" data-skill="35%" style="width: 35%;"></div>
+                        <p>PHP</p>
+                        <div class="progress" data-skill="60%" style="width: 60%;"></div>
+                        <p>Java</p>
+                        <div class="progress" data-skill="35%" style="width: 35%;"></div>
+                        <p>Python</p>
+                        <div class="progress" data-skill="15%" style="width: 15%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Driving</span>
+                        <span class="toggle-arrow">^</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="progress" data-skill="99%" style="width: 99%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillHeaders = document.querySelectorAll('.skill-header');
+            skillHeaders.forEach(skillHeader => {
+                skillHeader.addEventListener('click', function() {
+                    toggleSkill(this);
+                });
+            });
+        });
+
+        function toggleSkill(element) {
+            const activeSkill = document.querySelector('.skill-bar.active');
+            const skillBar = element.nextElementSibling;
+
+            if (activeSkill && activeSkill !== skillBar) {
+                activeSkill.classList.remove('active');
+                activeSkill.previousElementSibling.querySelector('.toggle-arrow').textContent = '^';
+            }
+
+            skillBar.classList.toggle('active');
+            const toggleArrow = element.querySelector('.toggle-arrow');
+            toggleArrow.textContent = skillBar.classList.contains('active') ? 'v' : '^';
+        }
+    </script>
+</body>
+</html>

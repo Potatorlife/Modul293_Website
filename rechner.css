@@ -1,0 +1,120 @@
+/* Universal-Selektor-Symbol */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* den Hauptcontainer des Rechners */
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #e3f9ff;
+    display: flex;
+    align-items:  center;
+    justify-content: center;
+}
+
+/* Gebe den Körper des Rechners Farbe, Padding und eine Border */
+.calculator {
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Entfernung von Rand und Umrisslinie.
+Festlegung von Breite und Höhe auf 60px.
+Abrundung der Ecken mit einem Radius von 10px.
+Anwendung eines Schatteneffekts für einen 3D-Look mit zwei Schatten: einer hellen oben links und einem dunkleren unten rechts.
+Transparenter Hintergrund mit weißer Schriftfarbe und einer Schriftgröße von 20px.
+Der Cursor wird zu einem Zeiger, wenn er über ein solches input-Element fährt.
+Ein Außenabstand von 10px um das Element.
+Eine Übergangsanimation für den Schatten, um weiche Interaktionseffekte zu erzeugen. */
+.calculator form input {
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Einen inneren Schatteneffekt, der den Eindruck erweckt, dass das Element eingedrückt ist.
+Änderung der Hintergrundfarbe zu einem dunklen Grauton. */
+.calculator form input:active {
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.5);
+    background-color: #2a2d35;
+}
+
+/* Stilregeln für ein Element mit der Klasse display innerhalb eines form-Elements, 
+das für die Anzeige von Werten oder Ergebnissen genutzt wird. Es verwendet Flexbox, 
+um den Inhalt rechtsbündig auszurichten, und setzt einen oberen und unteren Rand. */
+form .display {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+/* Rechtsbündiger Text.
+Flexibles Ausfüllen des verfügbaren Raumes innerhalb des Flex-Containers.
+Größere Schriftgröße und kein Schatteneffekt. */
+form .display input {
+    text-align: right;
+    flex: 1;
+    font-size: 25px;
+    box-shadow: none;
+}
+
+/* Hier gebe ich dem Gleichheits button eine länge von 145px
+Setze die Farbe auf Pink und stelle die Schriftgrösse auf 22px */
+form input.equal {
+    width: 145px;
+    color: #ff33d6;
+    font-size: 22px;
+}
+
+/* bei den Operatoren, stelle ich die Schriftfarbe auf Hellblau
+und die Schriftgrösse auf 22px */
+form input.operator {
+    color: #33ffd8;
+    font-size: 22px;
+}
+
+/* Definiert den Stil für einen Container, der vermutlich eine Fortschritts- oder Ergebnisleiste enthält, 
+mit einem hellgrauen Hintergrund, abgerundeten Ecken und einem oberen Rand. */
+.result-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: white;
+}
+
+/* Legt den Stil für ein Element fest, das Skalenwerte oder Beschriftungen innerhalb des .result-bar-container anzeigt, 
+mit zentriertem Text, kleinerer Schriftgröße und einer dunkleren Schriftfarbe. */
+.result-scale {
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Stilisiert eine Ergebnisleiste innerhalb des .result-bar-container, 
+mit einer bestimmten Höhe, abgerundeten Ecken und einer initialen Breite von 0%, 
+die animiert werden kann, um einen Füllstand oder Fortschritt anzuzeigen. */
+.result-bar {
+    height: 20px;
+    background-color: #33ffd8;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}

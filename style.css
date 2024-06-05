@@ -1,0 +1,218 @@
+html {
+    width: 100%;
+    height: 100%;
+    /* Weichere und moderne Farbpalette für den Hintergrund */
+    background: linear-gradient(180deg, #4a0c8c 0%, #2530fc 100%);
+    font-family: 'Poppins', sans-serif; /* Moderne Schriftart */
+    overflow: hidden;
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #2d2c2c; /* Sanfterer Farbton für Buttons */
+    color: #2530fc;
+    border-radius: 20px; /* Mehr Abrundung für modernes Aussehen */
+    padding: 10px 20px;
+    border: 0;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18pt;
+    font-weight: 600; /* Moderates Gewicht für Klarheit */
+    box-shadow: 0 4px 14px 0 rgba(0,0,0,0.1); /* Weicherer Schatten */
+    transition: background-color 0.3s ease; /* Sanfter Übergang für Interaktivität */
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Hervorhebungseffekt beim Überfahren */
+}
+
+.disabled {
+    background: #2d2c2c;; /* Deutlichere Unterscheidung für deaktivierte Buttons */
+    cursor: not-allowed;
+}
+
+.stats {
+    color: #FFF;
+    font-size: 17pt;
+    font-weight: 600;
+}
+
+.board-container {
+    position: relative;
+}
+
+.board,
+.win {
+    border-radius: 20px; /* Mehr Abrundung für das Board und Win-Overlay */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Weicherer Schatten */
+    background: #2d2c2c; /* Helle und freundliche Hintergrundfarbe */
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.board {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+}
+
+.board-container.flipped .board {
+    transform: rotateY(180deg) rotateZ(45deg); /* Sanftere Rotation */
+}
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 10px; /* Abrundung der Karten */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background: #cfafaf00; /* Updated for a visible background color */
+    border: 3px solid #2530fc; /* Specifies the border width, style, and color */
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+
+.card-back {
+    transform: rotateY(180deg) rotateZ(45deg); /* Angleichung der Rotation */
+    font-size: 28pt;
+    user-select: none;
+    text-align: center;
+    line-height: 100px;
+    color: #333; /* Dunklere Schriftfarbe für besseren Kontrast */
+}
+
+.card-front:hover{
+    border: 3px solid #7b25fc;
+    transition: .4s;
+}
+
+.card.flipped .card-front {
+    transform: rotateY(180deg) rotateZ(45deg);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0) rotateZ(0);
+}
+
+.card.matched .card-back {
+    border: 3px solid rgb(10, 152, 100); /* Verändert die Rahmenfarbe zu Grün */
+}
+
+.all-matched .card-back {
+    animation: spin360 1s ease-in-out;
+}
+
+@keyframes spin360 {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Define the keyframes for the gradient animation */
+@keyframes timerGradient {
+    0% { color: green; }
+    25% { color: yellow; }
+    50% { color: red; }
+    100% { color: darkred; }
+}
+
+.timer, .timer-seconds {
+    position: relative;
+    color: #FFF; /* Set a default text color, white in this case */
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.timer::before, .timer-seconds::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: linear-gradient(to right, green, yellow, red, darkred);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* Pause the animation when the game is finished */
+.timer.finished::before, .timer-seconds.finished::before {
+    animation-play-state: paused;
+}
+
+.timer{
+    position: relative;
+    color: green; /* Set a default text color, white in this case */
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.timer-seconds {
+    position: relative;
+    color: #FFF; /* Set a default text color, white in this case */
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #cfafaf00(255, 255, 255, 0.8); /* Leicht durchsichtiges Overlay */
+    transform: rotateY(180deg) rotateZ(45deg);
+}
+
+.win-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #3d43b8; /* Adjusted to match the button color */
+    /* Subtler glowing outline effect */
+    text-shadow: 
+    0 0 5px rgba(98, 0, 234, 0.7),
+    0 0 7px rgba(88, 1, 214, 0.7), 
+    0 0 9px rgba(78, 2, 194, 0.7), 
+    0 0 11px rgba(68, 3, 174, 0.7), 
+    0 0 13px rgba(58, 4, 154, 0.7);
+    font-size: 30pt;
+}
+
+.highlight {
+    color: #ffffff; /* Auffälligere Highlight-Farbe */
+    text-shadow: none !important;
+}

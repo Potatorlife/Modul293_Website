@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="link-holder">
+            <nav>
+                <ul>
+                    <li><a href="home.html" style="color: cyan;">Home</a></li>
+                    <li><a href="About.html">About me</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="Hobbys.html">Hobbies</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="profile">
+            <div class="info">
+                <h2>Mark Matkovic</h2>
+                <p>I'm a <span class="highlight"></span></p>
+            </div>
+            <div class="photo">
+                <div class="image-container">
+                    <img src="MarkTest.jpg" alt="Profile Photo">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>Mark Matkovic</span>
+            <span>Libs Industrielle Berufslehre</span>
+            <span>St.Gallen</span>
+            <span>1. Lehrjahr</span>
+        </div>
+        <div class="copyright">
+            <span>Copyright</span>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed(".highlight", {
+            strings: ["Programmer", "Apprentice", "Student", "Biker"],
+            typeSpeed: 60,
+            backSpeed: 60,
+            loop: true
+        });
+
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        var navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(function(navLink) {
+            navLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                // Remove active class from all nav-links
+                navLinks.forEach(function(link) {
+                    link.classList.remove("active");
+                });
+                // Add active class to the clicked nav-link
+                navLink.classList.add("active");
+            });
+        });
+    });
+
+    </script>
+    
+</body>
+</html>
